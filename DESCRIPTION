@@ -1,0 +1,10 @@
+Package: Lock5Data
+Type: Package
+Title: Datasets for "Statistics: UnLocking the Power of Data"
+Version: 2.5
+Date: 2012-07-20
+Author: Robin Lock
+Maintainer: Robin Lock <rlock@stlawu.edu>
+Description: Datasets for "Statistics:Unlocking the Power of Data" by Lock, Lock, Lock, Lock and Lock
+License: GPL-2
+LazyLoad: yes
