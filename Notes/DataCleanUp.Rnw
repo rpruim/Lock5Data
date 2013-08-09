@@ -1,0 +1,155 @@
+\documentclass[10pt]{article}
+\usepackage[margin=.5in]{geometry}
+
+\begin{document}
+\small
+
+<<message=FALSE, echo=FALSE>>=
+require(mosaic)
+require(xtable)
+require(plyr)
+require(testthat)
+require(Lock5Data)
+symdiff <- function(a,b) {
+  c( setdiff(a,b), setdiff(b,a) )
+}
+myorder <- function(a,b) {
+  c(setdiff(a,b), intersect(a,b))
+}
+
+dfdiffs <- function(a,b) {
+  commonNames <- intersect(names(a), names(b))
+  res <- setdiff(names(a), names(b))
+  for (n in commonNames) {
+    check <- tryCatch( expect_equal(a[,n], b[,n]), error=function(e) {FALSE} )
+    if (is.null(check)) check <- TRUE
+    if (!check)  res <- c(n,res)
+  }
+  return(res)
+}
+@
+
+<<results='asis',echo=FALSE>>=
+dropOldVars <- TRUE
+dataNames <- data(package="Lock5Data")[[3]][,3]
+cat("\\section{Modified Data}")
+@
+
+Below is an automated search for data sets that I have changed.  For each such data set,
+a summary of the affected variables is given.  Variables not listed should be 
+be unchanged.
+<<>>=
+modPaths <- file.path( "../data", paste(dataNames,".R",sep=""))
+table( file.exists( modPaths) )
+@
+
+<<results='asis',echo=FALSE>>=
+for (n in dataNames) {
+  modFile <- paste(n,".R",sep="")
+  modPath<- file.path( "../data", modFile )
+#  cat(paste("\\subsection{", modFile, "}"))
+  if (file.exists(modPath)) {
+    dataFile <- sub("\\.R", "\\.rda", modFile)
+    dataPath<- file.path( "../data", dataFile)
+    cat(paste("\\subsection{", n, "}"))
+    command <- paste( "load('", dataPath,"')", sep="") 
+    eval( parse ( text= command ) )
+    eval( parse ( text= paste( "orig<-", n) ) )
+    # print(xtable(t(summary(orig, 3))))
+    message(paste("sourcing", modPath))
+    source(modPath, chdir=TRUE)
+    eval( parse ( text= paste( "new <-", n) ) )
+    if (length(dfdiffs(orig,new) > 0)) {
+      cat("\\subsubsection{Original}")
+      print(xtable( summary( orig[, dfdiffs(orig,new), drop=FALSE]) ), floating=FALSE)
+    } 
+    if (length(dfdiffs(new,orig) > 0)) {
+      cat("\\subsubsection{Modified}")
+      print(xtable( summary(  new[, dfdiffs(new,orig), drop=FALSE]) ), floating=FALSE)
+    }
+    eval( parse ( text= paste( "rm(", n,")") ) )
+  }
+}
+
+@
+
+\section{Other Notes}
+
+\subsection{Coding Sex}
+
+Both the name (Sex or Gender) and the coding (M/F or Male/Female or 0/1) were highly inconsistent among the data sets.  Because of these inconsistencies, it would be good to double check
+that there are the correct number of subjects of each sex in the data sets.
+
+I think most biologists prefer `sex' to `gender', so when that variable did not exist, I created
+it.  Sometimes I left Gender as a variable (for example, when `Gender' was part of the name
+of the data set), sometimes I removed it.
+
+\subsection{Coding Dates}
+
+I used the \texttt{lubridate} package to turn date-like objects into actuall R dates.  This makes it possible to do nice plots of time series in R.  (I introduced new variables called things like \texttt{DateStr} that still contain the original format of the date, which was not consistent across the various data sets.)
+
+<<fig.width=12, fig.height=6, out.width="\\textwidth", fig.show='hold'>>=
+require(lattice)
+trellis.par.set(theme=col.mosaic())
+xyplot( (Close - Open) ~ Date, data=SandP500, type="l", main="S and P daily changes")
+xyplot( High + Close + Low ~ Date, data=SandP500, type="l", 
+        auto.key=list(lines=TRUE, points=FALSE), main="S and P Highs, Lows, and Closes" )
+@
+
+\subsection{BodyFat}
+The documentation is light and includes no mention of units.
+
+\subsection{BodyTemp50}
+
+The coding of males and females is unclear.  I've just guessed which way it goes.  
+(Documentation is wrong on that as well.)
+<<>>=
+mean( BodyTemp ~ Sex, data=BodyTemp50 )
+@
+
+
+\subsection{CarbonDioxide and CO2}
+
+These appear to be identical.  
+<<>>=
+tally( ~ CO2$Year == CarbonDioxide$Year )
+tally( ~ CO2$CO2 == CarbonDioxide$CO2 )
+@
+
+Furthermore, the variable name has a zero that should probably
+be a letter O.
+
+\subsection{ICUAdmissions}
+
+This data set had more changes than most and the output above
+doesn't fit on the page.
+
+<<>>=
+load("../data/ICUAdmissions.rda")
+old <- ICUAdmissions
+data(ICUAdmissions)
+new <- ICUAdmissions
+dfdiffs(old,new)
+dfdiffs(new,old)
+@
+<<results='asis', echo=FALSE>>=
+cat("\\subsubsection{Original}")
+print(xtable(summary(subset(old, select=head(dfdiffs(old,new),8)))),floating=FALSE)
+cat("\n")
+print(xtable(summary(subset(old, select=tail(dfdiffs(old,new),8)))),floating=FALSE)
+cat("\\subsubsection{Modified}")
+print(xtable(summary(subset(new, select=head(dfdiffs(new,old),7)))),floating=FALSE)
+cat("\n")
+print(xtable(summary(subset(new, select=dfdiffs(new,old)[8:14]))),floating=FALSE)
+cat("\n")
+print(xtable(summary(subset(new, select=tail(dfdiffs(new,old),7)))),floating=FALSE)
+cat("\n")
+@
+
+\subsection{MastersGolf}
+I find myself wishing this data set were more complete.  Things I'd like to see include 
+more data (more years and more golfers), a year variable, a golfer variable, perhaps a ``shots behind'' variable or a ``finish'' varialbe indicating how the player finished.
+
+I can always generate a random sample of smaller size from the complete data if I need one.
+
+\end{document}
