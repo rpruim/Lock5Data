@@ -1,30 +1,29 @@
+\docType{data}
 \name{BaseballTimes}
 \alias{BaseballTimes}
-\docType{data}
 \title{Baseball Game Times}
-\description{
-Information for a sample of 30 Major League Baseball games played during the 2011 season
+\format{A dataset with 30 observations on the following 9 variables.
+\itemize{
+  \item{\code{Away} } { Away team name}
+  \item{\code{Home}} { Home team name}
+  \item{\code{Runs}} { Total runs scored (both teams)}
+  \item{\code{Margin}} { Margin of victory}
+  \item{\code{Hits}} { Total number of hits (both teams)}
+  \item{\code{Errors}} { Total number of errors (both teams)}
+\item{\code{Pitchers}} { Total number of pitchers used (both teams)}
+\item{\code{Walks}} { Total number of walks (both teams)}
+  \item{\code{Time}} { Elapsed time for game (in minutes) }
+  }}
+\source{
+  \url{http://www.baseball-reference.com/boxes/2011.shtml}
 }
-%\usage{data(BaseballTimes)}
-\format{
-  A dataset with 30 observations on the following 9 variables.
-  \tabular{rl}{
-    \code{Away} \tab {Away team name}\cr
-    \code{Home} \tab {Home team name}\cr
-    \code{Runs} \tab {Total runs scored (both teams)}\cr
-    \code{Margin} \tab {Margin of victory}\cr
-    \code{Hits} \tab {Total number of hits (both teams)}\cr
-    \code{Errors} \tab {Total number of errors (both teams)}\cr
-    \code{Pitchers} \tab {Total number of pitchers used (both teams)}\cr
-    \code{Walks} \tab {Total number of walks (both teams)}\cr
-    \code{Time} \tab {Elapsed time for game (in minutes)}\cr
-  }
+\description{
+  Information for a sample of 30 Major League Baseball
+  games played during the 2011 season.
 }
 \details{
-Data from a sample of boxscores for Major League Baseball games played in August 2011. 
+  Data from a sample of boxscores for Major League Baseball
+  games played in August 2011.
 }
-\source{
-http://www.baseball-reference.com/boxes/2011.shtml
-}
-
 \keyword{datasets}
+

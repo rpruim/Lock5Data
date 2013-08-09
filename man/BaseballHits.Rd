@@ -1,37 +1,32 @@
+\docType{data}
 \name{BaseballHits}
 \alias{BaseballHits}
-\docType{data}
-\title{
-Baseball Hits
+\title{Baseball Hits}
+\format{A dataset with 30 observations on the following 14 variables.
+\itemize{
+  \item{\code{Team}} {Name of baseball team}
+  \item{\code{League}} {Either \code{AL} or \code{NL}}
+  \item{\code{Wins}} {Number of wins for the season}
+  \item{\code{Runs}} {Number of runs scored}
+  \item{\code{Hits}} {Number of hits}
+  \item{\code{Doubles}} {Number of doubles}
+  \item{\code{Triples}} {Number of triples}
+  \item{\code{HomeRuns}} {Number of home runs}
+  \item{\code{RBI}} {Number of runs batted in}
+  \item{\code{StolenBases}} {Number of stolen bases}
+  \item{\code{CaughtStealing}} {Number of times caught stealing}
+  \item{\code{Walks}} {Number of walks}
+  \item{\code{Strikeouts}} {Number of stikeouts}
+  \item{\code{BattingAvg}} {Team batting average}
+  }}
+\source{
+  \url{http://www.baseball-reference.com/leagues/MLB/2011-standard-batting.shtml}
 }
 \description{
-Number of hits and wins for MLB teams
-}
-%\usage{data(BaseballHits)}
-\format{
-  A dataset with 30 observations on the following 14 variables.
-  \tabular{rl}{
-    \code{Team} \tab {Name of baseball team}\cr
-    \code{League} \tab {Either \code{AL} or \code{NL}}\cr
-    \code{Wins} \tab {Number of wins for the season}\cr
-    \code{Runs} \tab {Number of runs scored}\cr
-    \code{Hits} \tab {Number of hits}\cr
-    \code{Doubles} \tab {Number of doubles}\cr
-    \code{Triples} \tab {Number of triples}\cr
-    \code{HomeRuns} \tab {Number of home runs}\cr
-    \code{RBI} \tab {Number of runs batted in}\cr
-    \code{StolenBases} \tab {Number of stolen bases}\cr
-    \code{CaughtStealing} \tab {Number of times caught stealing}\cr
-    \code{Walks} \tab {Number of walks}\cr
-    \code{Strikeouts} \tab {Number of stikeouts}\cr
-    \code{BattingAvg} \tab {Team batting average}\cr
-  }
+  Number of hits and wins for Major League Baseball teams
 }
 \details{
-Data from the 2010 Major League Baseball regular season. 
+  Data from the 2010 Major League Baseball regular season.
 }
-\source{
-http://www.baseball-reference.com/leagues/MLB/2011-standard-batting.shtml
-}
-
 \keyword{datasets}
+

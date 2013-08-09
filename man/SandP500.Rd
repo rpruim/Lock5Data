@@ -1,34 +1,37 @@
+\docType{data}
 \name{SandP500}
 \alias{SandP500}
-\docType{data}
-\title{
-S \& P 500 Prices
+\title{S \& P 500 Prices}
+\format{A data frame with 252 observations on the following 6 variables.
+\itemize{
+   \item{\code{DateStr}} {Date as a character string}
+   \item{\code{Date}} {Date as a date object}
+   \item{\code{Open}} {Opening value}
+
+   \item{\code{High}} {High point for the day}
+   \item{\code{Low}} {Low point for
+the day}
+   \item{\code{Close}} {Closing value}
+   \item{\code{Volume}} {Shares
+traded (in millions)} }}
+\source{
+  Downladed from
+  \url{http://finance.yahoo.com/q/hp?s=^GSPC+Historical+Prices}
 }
 \description{
-Daily data for S\& P 500 Stock Index
-}
-\usage{data(SandP500)}
-\format{
-  A data frame with 252 observations on the following 6 variables.
-  \describe{
-    \item{\code{Date}}{}
-    \item{\code{Open}}{Opening value}
-    \item{\code{High}}{High point for the day}
-    \item{\code{Low}}{Low point for the day}
-    \item{\code{Close}}{Closing value}
-    \item{\code{Volume}}{Shares traded (in millions)}
-  }
+  Daily data for S\& P 500 Stock Index
 }
 \details{
-Daily prices for the S\& P 500 Stock Index for trading days in 2010. 
-}
-\source{
-Downladed from http://finance.yahoo.com/q/hp?s=^GSPC+Historical+Prices
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
+  Daily prices for the S\& P 500 Stock Index for trading
+  days in 2010.
 }
 \examples{
-%% data(SandP500)
+data(SandP500)
+if (require(lattice)) {
+  xyplot( High + Low ~ Date, data=SandP500, type="l",
+    main="S and P 500",
+    auto.key=list(lines=TRUE, points=FALSE))
+ }
 }
 \keyword{datasets}
+

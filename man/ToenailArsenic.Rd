@@ -1,29 +1,26 @@
+\docType{data}
 \name{ToenailArsenic}
 \alias{ToenailArsenic}
-\docType{data}
-\title{
-Toenail Arsenic
+\title{Toenail Arsenic}
+\format{A data frame with 19 observations on the following variable.
+\itemize{
+   \item{\code{Arsenic}} {Level of arsenic found in toenails} }}
+\source{
+  Adapted from Karagas, et.al.,"Toenail Samples as an
+  Indicator of Drinking Water Arsenic Exposure", Cancer
+  Epidemiology, Biomarkers and Prevention 1996;5:849-852.
 }
 \description{
-Arsenic in toenails of 19 people using private wells in New Hampshire
-}
-\usage{data(ToenailArsenic)}
-\format{
-  A data frame with 19 observations on the following variable.
-  \describe{
-    \item{\code{Arsenic}}{Level of arsenic found in toenails}
-  }
+  Arsenic in toenails of 19 people using private wells in
+  New Hampshire
 }
 \details{
-Level of arsenic was measured in toenails of 19 subjects from New Hampshire, all with private wells as their main water source. 
-}
-\source{
-Adapted from Karagas, et.al.,"Toenail Samples as an Indicator of Drinking Water Arsenic Exposure", Cancer Epidemiology, Biomarkers and Prevention 1996;5:849-852.
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
+  Level of arsenic was measured in toenails of 19 subjects
+  from New Hampshire, all with private wells as their main
+  water source.
 }
 \examples{
-%% data(ToenailArsenic)
+data(ToenailArsenic)
 }
 \keyword{datasets}
+

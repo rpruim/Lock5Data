@@ -1,24 +1,21 @@
+\docType{data}
 \name{APMultipleChoice}
 \alias{APMultipleChoice}
-\docType{data}
-\title{
-AP Multiple Choice
+\title{AP Multiple Choice}
+\format{A dataset with 400 observations on the following variable.
+\itemize{
+\code{C}, \code{D}, or \code{E} }}
+\source{
+  Sample exams from several disciplines at
+  \url{http://apcentral.collegeboard.com}
 }
 \description{
-Correct responses on Advanced  Placement multiple choice exams
-}
-%\usage{data(APMultipleChoice)}
-\format{
-  A dataset with 400 observations on the following variable.
-  \tabular{rl}{
-    \code{Answer} \tab {Correct respoinse: \code{A},  \code{B},  \code{C}, \code{D}, or \code{E}}\cr
-  }
+  Correct responses on Advanced Placement multiple choice
+  exams
 }
 \details{
-Correct responses from multiple choice sections for a sample of released Advanced Placement exams
+  Correct responses from multiple choice sections for a
+  sample of released Advanced Placement exams
 }
-\source{
-Sample exams from several disciplines at http://apcentral.collegeboard.com
-}
-
 \keyword{datasets}
+

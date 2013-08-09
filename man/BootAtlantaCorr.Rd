@@ -1,29 +1,24 @@
+\docType{data}
 \name{BootAtlantaCorr}
 \alias{BootAtlantaCorr}
-\docType{data}
-\title{
-Bootstrap Correlations for Atlanta Commutes
+\title{Bootstrap Correlations for Atlanta Commutes}
+\format{A data frame with 1000 observations on the following variable.
+\itemize{
+   \item{\code{CorrTimeDist}} {Correlation between Time and Distance
+for a bootstrap sample of Atlanta commuters} }}
+\source{
+  Computer simulation
 }
 \description{
-Boostrap correlations between Time and Distance for 500 commuters in Atlanta
-}
-\usage{data(BootAtlantaCorr)}
-\format{
-  A data frame with 1000 observations on the following variable.
-  \describe{
-    \item{\code{CorrTimeDist}}{Correlation between Time and Distance for a bootstrap sample of Atlanta commuters}
-  }
+  Boostrap correlations between Time and Distance for 500
+  commuters in Atlanta
 }
 \details{
-Correlations for bootstrap samples of Time vs. Distance for the data on Atlanta commuters in CommuteAtlanta.
-}
-\source{
-Computer simulation
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
+  Correlations for bootstrap samples of Time vs. Distance
+  for the data on Atlanta commuters in CommuteAtlanta.
 }
 \examples{
-%% data(BootAtlantaCorr)
+data(BootAtlantaCorr)
 }
 \keyword{datasets}
+
