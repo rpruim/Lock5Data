@@ -7,6 +7,6 @@ s <- c("Never", "Former", "Current")
 NutritionStudy <- transform(NutritionStudy, 
     PriorSmoke = factor( s[PriorSmoke], levels=s))
 NutritionStudy <- transform(NutritionStudy, Sex=Gender)
-NutritionStudy <- subset(NutritionStudy, select = -Gender)
+# NutritionStudy <- subset(NutritionStudy, select = -Gender)
 rm(s)
 
