@@ -20,7 +20,7 @@ BootvRand <- function( data, i=1, null=0, xlab="", level=.95, alpha=1-level, ...
 }
 
 mBootvRand <- function(data, i=1, null=mean(data[,i],na.rm=TRUE), digits=2,...) {
-  manipulate( BootvRand(data, null=N, alpha=ALPHA, ...),
+  manipulate( BootvRand(data, i=i, null=N, alpha=ALPHA, ...),
               N = slider(
                 label="Null Hypothesis Value",
                 round(mean(data[,i], na.rm=TRUE) - 4 * iqr(data[,i], na.rm=TRUE), digits),
