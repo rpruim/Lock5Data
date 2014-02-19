@@ -1,11 +1,11 @@
 Package: Lock5Data
 Type: Package
 Title: Datasets for "Statistics: UnLocking the Power of Data"
-Version: 2.7-2
-Date: 2013-10-10
+Version: 2.7-3
+Date: 2014-02-19
 Author: Robin Lock
 Maintainer: Randall Pruim <rpruim@calvin.edu>
-Description: Datasets for "Statistics:Unlocking the Power of Data" by
+Description: Datasets for "Statistics: Unlocking the Power of Data" by
     Lock, Lock, Lock, Lock and Lock (Forked from original)
 License: GPL-2
 Suggests:
@@ -14,5 +14,3 @@ Suggests:
     mosaic
 LazyLoad: yes
 LazyData: yes
-Collate:
-    'Lock5Data-package.R'

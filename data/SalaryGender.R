@@ -4,5 +4,5 @@ SalaryGender <- transform(SalaryGender,
 )
 
 SalaryGender <- transform(SalaryGender, 
-    PhD = factor(ifelse(PhD==0, "No", "Yes"))
+    phD = factor(ifelse(PhD==0, "No", "Yes"))
 )

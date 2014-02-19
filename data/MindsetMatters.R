@@ -1,2 +1,2 @@
 load("MindsetMatters.rda")
-MindsetMatters <- transform(MindsetMatters, Cond = factor(ifelse(Cond ==0, "Uninformed", "Informed") ))
+MindsetMatters <- transform(MindsetMatters, Condition = factor(ifelse(Cond ==0, "Uninformed", "Informed") ))

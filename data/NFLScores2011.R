@@ -6,6 +6,6 @@ NFLScores2011 <- transform( NFLScores2011,
 NFLScores2011 <- transform( NFLScores2011, 
       DateStr = as.character(paste(Year,"-",Date, sep="")))
 require(lubridate)
-NFLScores2011 <- transform( NFLScores2011, Date = ydm(as.character(DateStr)) )
+NFLScores2011 <- transform( NFLScores2011, YDM = ydm(as.character(DateStr)) )
 NFLScores2011 <- transform( NFLScores2011, 
       Day = factor(as.character(Day), levels=c("Thu", "Sat", "Sun", "Mon")) )

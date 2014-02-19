@@ -4,8 +4,8 @@ SleepStudy <- transform(SleepStudy,
     Sex = factor(ifelse(Gender==0, "Female", "Male")) )
 
 SleepStudy <- transform(SleepStudy,
-    AllNighter = factor(ifelse(AllNighter==0, "No", "Yes")) )
+    allNighter = factor(ifelse(AllNighter==0, "No", "Yes")) )
 
 SleepStudy <- transform(SleepStudy,
-    EarlyClass = factor(ifelse(EarlyClass == 0, "No", "Yes")) )
+    earlyClass = factor(ifelse(EarlyClass == 0, "No", "Yes")) )
 

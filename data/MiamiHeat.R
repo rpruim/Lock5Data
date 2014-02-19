@@ -1,6 +1,8 @@
 load('MiamiHeat.rda')
 
-MiamiHeat <- transform( MiamiHeat, DateStr = as.character(Date) )
 
-if (require(lubridate)) 
-  MiamiHeat <- transform(MiamiHeat , Date = mdy(as.character(Date)) )
+if (require(lubridate)) {
+  MiamiHeat <- transform(MiamiHeat , MDY = mdy(as.character(Date)) )
+} else {
+  MiamiHeat <- transform(MiamiHeat , MDY = as.character(Date)) 
+}

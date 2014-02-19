@@ -76,7 +76,9 @@ NULL
 #' the population with HIV}
 #' \item{\code{Internet}} {Percentage of the population
 #' with access to the internet}
-#' \item{\code{Developed}} {An ordered factor of categories for kilowatt
+#' \item{\code{Developed}} {A numeric code for the level of development
+#' based on kilowatt hours per capita}
+#' \item{\code{kwhPerCap}} {An ordered factor of categories for kilowatt
 #' hours per capita, \code{under 2500}, \code{2500 to 5000}, or \code{over 5000}}
 #' \item{\code{BirthRate}} {Births per 1000 people}
 #' \item{\code{ElderlyPop}} {Percentage of the population at least 65 year old}
@@ -247,19 +249,19 @@ NULL
 #' @format A dataset with 56 observations on the following 9 variables.
 #' \itemize{
 #' \item{\code{Bike}} {Type of material (\code{Carbon} or \code{Steel})}
-#' \item{\code{Date}} {Date of the bike commute as a date object}
-#' \item{\code{DateStr}} {Date of the bike commute as a character string}
+#' \item{\code{Date}} {Date of the bike commute as a string}
+#' \item{\code{DMY}}  {Date of the bike commute as a date object}
 #' \item{\code{Distance}} {Length of commute (in miles)}
 #' \item{\code{Time}} {Total commute time (hours:minutes:seconds)}
 #' \item{\code{Minutes}} {Time converted to minutes}
 #' \item{\code{AvgSpeed}} {Average speed during the ride (miles per hour)}
 #' \item{\code{TopSpeed}} {Maximum speed (miles per hour)}
 #' \item{\code{Seconds}} {Time converted to seconds}
-#' \item{\code{Month}} {Month} 
-#' \item{\code{NumMonth}} {Month coded as one of \code{1Jan},
+#' \item{\code{MonthStr}} {Month} 
+#' \code{MonthNum} {Numeric value of month}
+#' \item{\code{Month}} {Month coded as one of \code{1Jan},
 #' \code{2Feb}, \code{3Mar}, \code{4Apr}, \code{5May}, 
 #' \code{6June}, or \code{7July}},
-#' \code{MonthNum} {Numeric value of month}
 #' }
 #' @references "Bicycle weight and commuting time: randomised trial," 
 #' in British Medical Journal, BMJ 2010;341:c6801.
@@ -759,20 +761,29 @@ NULL
 #' @docType data
 #' @format A dataset with 431 observations on the following 9 variables.
 #' \itemize{
-#'		\item{\code{Sex}} {\code{Female} or \code{Male} }
+#'		\item{\code{sex}} {\code{Female} or \code{Male} }
+#'		\item{\code{Sex}} {\code{0} or \code{1} }
 #'		\item{\code{Age}} {Age (years)}
+#'		\item{\code{married}} {\code{0} or \code{1}}
 #'		\item{\code{Married}} {\code{Not Married} or \code{Married}}
 #'		\item{\code{Income}} {Wages and salary for the past 12 months (in \$1,000's)}
 #'		\item{\code{HoursWk}} {Hours of work per week}
 #'		\item{\code{Race}} {\code{asian}, \code{black}, \code{white}, or \code{other}}
-#'		\item{\code{USCitizen}} {\code{Citizen} or \code{Noncitizen}}
-#' 		\item{\code{HealthInsurance}} {\code{Insured} or \code{Uninsured}}
-#'		\item{code{Language}} {Native language: \code{English} or \code{Other}}
+#'		\item{\code{UScitizen}} {\code{Citizen} or \code{Noncitizen}}
+#'		\item{\code{USCitizen}} {\code{0} or \code{1}}
+#' 		\item{\code{healthInsurance}} {\code{Insured} or \code{Uninsured}}
+#' 		\item{\code{HealthInsurance}} {\code{0} or \code{1}}
+#'		\item{code{language}} {Native language: \code{English} or \code{Other}}
+#'		\item{code{Language}} {Native language: \code{0} or \code{1}}
 #' }
 #' @source The full public dataset can be downloaded at 
 #' \url{http://www.census.gov/acs/www/data_documentation/pums_data/}
 #' and the full list of variables is at 
 #' \url{http://www.census.gov/acs/www/Downloads/data/documentation/pums/DataDict/PUMSDataDict10.pdf}.
+#' @details
+#' Several variables in this data set are included in two encodings.  (Watch your 
+#' capitalization.)  The lowercase versions have more intuitive codings and can 
+#' be used to interpret the numerical codes.
 #' @keywords datasets
 NULL
 
@@ -938,7 +949,8 @@ NULL
 #' @format A data frame with 36 observations on the following 3 variables.
 #' \itemize{ 
 #'    \item{\code{Date}} {Date of the flight (5th, 15th and 25th of
-#' each month in 2010} 
+#' each month in 2010) as a factor} 
+#'    \item{\code{MDY}} {Date as a date object}
 #'    \item{\code{Flight179}} {Flying time (Boston-SF) in
 #' minutes} 
 #'    \item{\code{Flight180}} {Fllying time (SF-Boston) in minutes} }
@@ -1384,42 +1396,63 @@ NULL
 #' \itemize{ 
 #'    \item{\code{ID}} {Patient ID number}
 #' 
-#'    \item{\code{Status}} {Patient status: \code{Lived} or \code{Died}}
+#'    \item{\code{status}} {Patient status: \code{Lived} or \code{Died}}
+#'    \item{\code{Status}} {numerical code for \code{Status}}
 #' 
 #'    \item{\code{Age}} {Patient's age (in years)}
 #' 
-#'    \item{\code{Sex}} {\code{Male} or \code{Female}}
+#'    \item{\code{sex}} {\code{Male} or \code{Female}}
+#'    \item{\code{Sex}} {numerical code for \code{sex}}
 #' 
-#'    \item{\code{Race}} {Patient's race: \code{White}, \code{Black}, or
+#'    \item{\code{race}} {Patient's race: \code{White}, \code{Black}, or
 #' \code{Other} }
-#'    \item{\code{Service}} {Type of service: \code{Medical} or
+#'    \item{\code{Race}} {numerical code for \code{race}}
+#'    \item{\code{service}} {Type of service: \code{Medical} or
 #' \code{Surgical} }
-#'    \item{\code{Cancer}} {Is cancer involved?  \code{No} or \code{Yes}}
-#'    \item{\code{Renal}} {Is chronic renal failure involved? \code{No} or \code{Yes}} 
-#'    \item{\code{Infection}} {Is infection involved? \code{No} or \code{Yes}}
-#'    \item{\code{CPR}} {Patient gets CPR prior to admission? \code{No} or \code{Yes}}
+#'    \item{\code{Service}} {numerical code for \code{service}}
+#'    \item{\code{cancer}} {Is cancer involved?  \code{No} or \code{Yes}}
+#'    \item{\code{Cancer}} {Is cancer involved?  \code{0} or \code{1}}
+#'    \item{\code{renal}} {Is chronic renal failure involved? \code{No} or \code{Yes}} 
+#'    \item{\code{Renal}} {Is chronic renal failure involved? \code{0} or \code{1}} 
+#'    \item{\code{infection}} {Is infection involved? \code{No} or \code{Yes}}
+#'    \item{\code{Infection}} {Is infection involved? \code{0} or \code{1}}
+#'    \item{\code{cpr}} {Patient gets CPR prior to admission? \code{No} or \code{Yes}}
+#'    \item{\code{CPR}} {Patient gets CPR prior to admission? \code{0} or \code{1}}
 #'    \item{\code{Systolic}} {Systolic blood pressure (in mm of Hg)} 
 #'    \item{\code{HeartRate}} {Pulse rate (beats per minute)} 
-#'    \item{\code{Previous}} {Previous admission to ICU wihtin 6 months? \code{No} or \code{Yes}}
-#'    \item{\code{Type}} {Admission type: \code{Elective} or \code{Emergency}}
-#'    \item{\code{Fracture}} {Fractured bone involved? \code{No} or \code{Yes}}
-#'    \item{\code{PO2}} {Partial oxygen level from blood gases under 60? 
+#'    \item{\code{previous}} {Previous admission to ICU wihtin 6 months? \code{No} or \code{Yes}}
+#'    \item{\code{Previous}} {Previous admission to ICU wihtin 6 months? \code{0} or \code{1}}
+#'    \item{\code{type}} {Admission type: \code{Elective} or \code{Emergency}}
+#'    \item{\code{Type}} {Admission type: \code{0} or \code{1}}
+#'    \item{\code{fracture}} {Fractured bone involved? \code{No} or \code{Yes}}
+#'    \item{\code{Fracture}} {Fractured bone involved? \code{0} or \code{1}}
+#'    \item{\code{pO2}} {Partial oxygen level from blood gases under 60? 
 #'                      \code{No} or  \code{Yes}}
-#'    \item{\code{PHlow}} {pH from blood gas under 7.25? \code{No} or \code{Yes}}
-#'    \item{\code{PH}} {pH from blood gas under or over 7.25? \code{Low} or \code{Hi}}
-#'    \item{\code{PCO2hi}} {Partial carbon dioxide level from blood gas over 45?
+#'    \item{\code{PO2}} {Partial oxygen level from blood gases under 60? 
+#'                      \code{0} or  \code{1}}
+#'    \item{\code{pHlow}} {pH from blood gas under 7.25? \code{No} or \code{Yes}}
+#'    \item{\code{pH}} {pH from blood gas under or over 7.25? \code{Low} or \code{Hi}}
+#'    \item{\code{PH}} {pH from blood gas under or over 7.25? \code{0} or \code{1}}
+#'    \item{\code{pCO2hi}} {Partial carbon dioxide level from blood gas over 45?
 #'                \code{No} or \code{Yes}}
-#'    \item{\code{PCO2}} {Partial carbon dioxide level from blood gas over or under 45?
+#'    \item{\code{pCO2}} {Partial carbon dioxide level from blood gas over or under 45?
 #'                \code{Low} or \code{Hi}}
-#'    \item{\code{BicarbonateLow}} {Bicarbonate from
+#'    \item{\code{PCO2}} {Partial carbon dioxide level from blood gas over or under 45?
+#'                \code{0} or \code{1}}
+#'    \item{\code{bicarbonateLow}} {Bicarbonate from
 #' blood gas under 18? \code{No} or \code{Yes}}
-#'    \item{\code{Bicarbonate}} {Bicarbonate from
+#'    \item{\code{bicarbonate}} {Bicarbonate from
 #' blood gas under or over 18? \code{Low} or \code{Hi}}
-#'    \item{\code{CreatinineHi}} {Creatinine from blood gas over 2.0? 
+#'    \item{\code{Bicarbonate}} {Bicarbonate from
+#' blood gas under or over 18? \code{0} or \code{1}}
+#'    \item{\code{creatinineHi}} {Creatinine from blood gas over 2.0? 
 #'          \code{No} or \code{Yes}}
-#'    \item{\code{Creatinine}} {Creatinine from blood gas over or under 2.0? 
+#'    \item{\code{creatinine}} {Creatinine from blood gas over or under 2.0? 
 #'          \code{Low} or \code{Hi}}
-#'    \item{\code{Consciousness}} {Level: \code{Conscious}, \code{Deep Stupor}, or \code{Coma}}
+#'    \item{\code{Creatinine}} {Creatinine from blood gas over or under 2.0? 
+#'          \code{0} or \code{1}}
+#'    \item{\code{consciousness}} {Levels: \code{Conscious}, \code{Deep Stupor}, or \code{Coma}}
+#'    \item{\code{Consciousness}} {Levels: \code{0}, \code{1}, or \code{2}}
 #'    }
 #' @source DASL dataset downloaded from
 #' \url{http://lib.stat.cmu.edu/DASL/Datafiles/ICU.html}
@@ -1774,8 +1807,8 @@ NULL
 #' \itemize{ 
 #'    \item{\code{Game}} {ID number for each game}
 #' 
-#'    \item{\code{Date}} {Data the game was played as a date object}
-#'    \item{\code{DateStr}} {Data the game was played as a character string}
+#'    \item{\code{MDY}} {Data the game was played as a date object}
+#'    \item{\code{Date}} {Data the game was played as a character string}
 #' 
 #'    \item{\code{Location}} {\code{Away} or \code{Home}}
 #' 
@@ -1864,6 +1897,8 @@ NULL
 #' @docType data
 #' @format A data frame with 75 observations on the following 14 variables.
 #' \itemize{ 
+#'    \item{\code{Condition}} {Treatment condition: \code{uninformed} or
+#' \code{informed}} 
 #'    \item{\code{Cond}} {Treatment condition: \code{0}=uninformed or
 #' \code{1}=informed} 
 #'    \item{\code{Age}} {Age (in years)}
@@ -2076,8 +2111,8 @@ NULL
 #' \item{\code{AwayYards}} {Yards gained by the visiting team}
 #' \item{\code{HomeTO}} {Turnovers lost by the home team}
 #' \item{\code{AwayTO}} {Turnovers lost by the visiting team}
-#' \item{\code{Date}}  {Date of the game (as a date object)}
-#' \item{\code{DateStr}}  {Date of the game (as a character string)}
+#' \item{\code{Date}}  {Date of the game (as a character string)}
+#' \item{\code{YDM}}  {Date of the game (as a date object)}
 #' \item{\code{Day}} {Day of the week: \code{Mon}, \code{Sat}, \code{Sun}, or \code{Thu}}
 #' }
 #' @source NFL scores and game statistics found at
@@ -2137,8 +2172,10 @@ NULL
 #' 
 #'    \item{\code{VitaminUse}} {Coded as \code{No} \code{Occasional}
 #' \code{Regular}} 
-#'    \item{\code{PriorSmoke}} {Smoking status: \code{Never},
+#'    \item{\code{EverSmoke}} {Smoking status: \code{Never},
 #' \code{Former}, or \code{Current} }
+#'    \item{\code{PriorSmoke}} {Smoking status: \code{1},
+#' \code{2}, or \code{3} }
 #' }
 #' @references Data downloaded from
 #' \url{http://lib.stat.cmu.edu/datasets/Plasma_Retinol}.
@@ -2311,6 +2348,8 @@ NULL
 #'    \item{\code{Bill}} {Size of the bill (in dollars)}
 #' 
 #'    \item{\code{Tip}} {Size of the tip (in dollars)} 
+#'    \item{\code{CreditCard}} {Paid
+#' with a credit card?  \code{No} or \code{Yes}} 
 #'    \item{\code{Credit}} {Paid
 #' with a credit card?  \code{n} or \code{y}} 
 #'    \item{\code{Guests}} {Number of
@@ -2411,7 +2450,8 @@ NULL
 #' \item{\code{Gender}} {0=female or 1=male}
 #' \item{\code{Sex}} {\code{Female} or \code{Male}}
 #' \item{\code{Age}} {Age in years}
-#' \item{\code{PhD}} {\code{No} or \code{Yes}}
+#' \item{\code{phD}} {\code{No} or \code{Yes}}
+#' \item{\code{PhD}} {\code{0} or \code{1}}
 #' }
 #' @source \url{http://www.census.gov/acs/www/data_documentation/public_use_microdata_sample/}
 #' @keywords datasets
@@ -2445,8 +2485,9 @@ NULL
 #' 				the population with HIV} 
 #'    \item{\code{Internet}} {Percentage of the
 #' 				population with access to the internet} 
-#'    \item{\code{Developed}} {An ordered factor of categories for kilowatt
+#'    \item{\code{kwhPerCap}} {An ordered factor of categories for kilowatt
 #' 				hours per capita, \code{under 2500}, \code{2500 to 5000}, or \code{over 5000}}
+#'    \item{\code{Developed}} {A numerical code for \code{kwhPerCap}}
 #'    \item{\code{BirthRate}} {Births per 1000 people}
 #'    \item{\code{ElderlyPop}} {Percentage of the population at least 65 year old}
 #'    \item{\code{LifeExpectancy}} {Average life expectancy (in years)} 
@@ -2473,8 +2514,8 @@ NULL
 #' @docType data
 #' @format A data frame with 252 observations on the following 6 variables.
 #' \itemize{ 
-#'    \item{\code{DateStr}} {Date as a character string} 
-#'    \item{\code{Date}} {Date as a date object} 
+#'    \item{\code{Date}} {Date as a character string} 
+#'    \item{\code{MDY}} {Date as a date object} 
 #'    \item{\code{Open}} {Opening value}
 #' 
 #'    \item{\code{High}} {High point for the day} 
@@ -2662,6 +2703,7 @@ NULL
 #' \item{\code{LarkOwl}} {Early riser or night owl?
 #' 		\code{Lark}, \code{Neither}, or \code{Owl}}
 #' \item{\code{NumEarlyClass}} {Number of classes per week before 9 am}
+#' \item{\code{earlyClass}} {Indicator for any early classes}
 #' \item{\code{EarlyClass}} {Indicator for any early classes}
 #' \item{\code{GPA}} {Grade point average (0-4 scale)}
 #' \item{\code{ClassesMissed}} {Number of classes missed in a semester}
@@ -2687,7 +2729,8 @@ NULL
 #' \item{\code{WeekendRise}} {Average weekend rise time (8.0=8 am)}
 #' \item{\code{WeekendSleep}} {Average weekend bedtime (24.0=midnight)}
 #' \item{\code{AverageSleep}} {Average hours of sleep for all days}
-#' \item{\code{AllNighter}} {Had an all-nighter this semester?  \code{Yes} or \code{No}}
+#' \item{\code{allNighter}} {Had an all-nighter this semester?  \code{Yes} or \code{No}}
+#' \item{\code{AllNighter}} {Had an all-nighter this semester?  \code{0} or \code{1}}
 #' }
 #' @source Onyper, S., Thacher, P., Gilbert, J., Gradess, S., "Class Start
 #' Times, Sleep, and Academic Performance in College: A Path Analysis," April
@@ -2749,8 +2792,10 @@ NULL
 #' @docType data
 #' @format A dataset with 276 observations on the following 22 variables.
 #' \itemize{ 
-#' \item{\code{DecisionM}} {Would the male like another date?  \code{Yes} or \code{No}}
-#'    \item{ \code{DecisionF}} {Would the female like another date? \code{Yes} or \code{No}}
+#' \item{\code{DecisionMale}} {Would the male like another date?  \code{Yes} or \code{No}}
+#' \item{\code{DecisionM}} {Would the male like another date?  \code{0} or \code{1}}
+#'    \item{ \code{DecisionFemale}} {Would the female like another date? \code{Yes} or \code{No}}
+#'    \item{ \code{DecisionF}} {Would the female like another date? \code{0} or \code{1}}
 #'    \item{ \code{LikeM}} {How much the male likes his partner (1-10 scale)}
 #'    \item{ \code{LikeF}} {How much the female likes her partner (1-10 scale)}
 #'    \item{ \code{PartnerYesM}} {Male's estimate of chance the female wants
@@ -3137,6 +3182,8 @@ NULL
 #' \code{MW}=Midwest, \code{NE}=Northeast, \code{S}=South, or \code{W}=West}
 #' 
 #'    \item{\code{ObamaMcCain}} {Which 2008 Presidential candidate won state?
+#' \code{M}=McCain or \code{O}=Obama} 
+#'    \item{\code{Pres2008}} {Which 2008 Presidential candidate won state?
 #' \code{M}=McCain or \code{O}=Obama} 
 #'    \item{\code{Population}} {Number of
 #' residents (in millions)} 
