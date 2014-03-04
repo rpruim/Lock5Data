@@ -362,6 +362,7 @@ NULL
 #' \item{\code{Taps}} {Number of finger taps in one minute}
 #' \item{\code{Group}} {Treatment with levels \code{Caffeine} 
 #' and \code{No Caffeine}}
+#' \item{\code{Caffeine}} {a recoding of \code{Group} with levels \code{"Yes"} and \code{"No"}}
 #' }
 #' @source Hand, Daly, Lund, McConway and Ostrowski, Handbook of Small Data
 #' Sets, Chapman and Hall, London (1994), pp. 40
