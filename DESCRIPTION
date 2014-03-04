@@ -1,8 +1,8 @@
 Package: Lock5Data
 Type: Package
 Title: Datasets for "Statistics: UnLocking the Power of Data"
-Version: 2.7-3
-Date: 2014-02-19
+Version: 2.7-4
+Date: 2014-03-04
 Author: Robin Lock
 Maintainer: Randall Pruim <rpruim@calvin.edu>
 Description: Datasets for "Statistics: Unlocking the Power of Data" by
